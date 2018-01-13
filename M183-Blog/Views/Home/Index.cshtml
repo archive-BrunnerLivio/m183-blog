@@ -1,0 +1,26 @@
+﻿@model M183_Blog.ViewModels.HomeViewModel
+<div id="cards" class="container mb-2" style="margin-top: 100px">
+    <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
+        <h3 class="mb-4">Recent Posts</h3>
+        <p>This is our newerst collection of public posts.</p>
+    </div>
+    <div class="blog col-md-12 ml-auto mr-auto">
+        <div class="row">
+            @for(int i = 0; i < Model.Posts.Count(); i++)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://picsum.photos/40@(i)/600/?random" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.Posts[i].Title</h4>
+                            <p class="card-text">
+                                @Model.Posts[i].Description
+                            </p>
+                            @Html.ActionLink("Read More", "Index", "Post", new { postId = @Model.Posts[i].Id }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
