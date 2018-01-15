@@ -1,0 +1,50 @@
+﻿@model M183_Blog.ViewModels.DetailedPostViewModel
+
+<!DOCTYPE html>
+
+
+<div class="section-title col-lg-8 col-md-10 ml-auto mr-auto" style="margin: 100px;">
+    <h3 class="mb-4">@Model.Post.Title</h3>
+    <p style="font-weight: bold">@Model.Post.Description</p>
+    <hr/>
+    <p>@Model.Post.Content</p>
+    <p>By @Model.Post.User.Username at @Model.Post.CreatedOn</p>
+    <hr/><hr/>
+    <div class="testimonials section py-4">
+        <h3 class="section-title text-center m-5">Comments</h3>
+        <div class="container py-5">
+            <div class="row">
+                @foreach (var comment in Model.Post.Comment)
+                {
+                    <div class="col-md-4 testimonial text-center">
+                        <h5 class="mb-1">@comment.User.Username</h5>
+                        <span class="text-muted d-block mb-2">@comment.CreatedOn</span>
+                        <p>@comment.Commet</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    //ToDo: safe commment
+
+    <div class="contact section-invert py-4">
+        <h3 class="section-title text-center m-5">Write your Comment</h3>
+        <div class="container py-4">
+            <div class="row justify-content-md-center px-4">
+                <div class="contact-form col-sm-12 col-md-10 col-lg-7 p-4 mb-4 card">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Message</label>
+                                    <textarea id="exampleInputEmail1" class="form-control mb-4" rows="10" placeholder="Enter your message..." name="message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-success btn-pill d-flex ml-auto mr-auto" type="submit" value="Send Your Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
