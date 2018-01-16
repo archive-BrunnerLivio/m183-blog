@@ -9,12 +9,13 @@ namespace M183_Blog.Controllers
     public class PostController : Controller
     {
         public DataContext db = new DataContext();
+        private PostRepository postRepository;
 
         public ActionResult Index(int postId)
         {
+            this.postRepository = new PostRepository(db);
             return View("Index",
-                new DetailedPostViewModel(db.Posts.FirstOrDefault(p =>
-                    p.Id == postId && (p.Status != PostStatus.Private || p.User == SessionHelper.User))));
+                new DetailedPostViewModel(this.postRepository.GetPublicPostById(postId, SessionHelper.User)));
         }
     }
 }
