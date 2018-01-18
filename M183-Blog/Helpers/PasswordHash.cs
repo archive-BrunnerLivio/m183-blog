@@ -6,7 +6,7 @@ using System.Web;
 
 namespace M183_Blog.Helpers
 {
-    public sealed class SecurePasswordHasher
+    public sealed class PasswordHash
     {
         /// <summary>
         /// Size of salt

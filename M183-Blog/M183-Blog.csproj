@@ -151,7 +151,7 @@
     </Compile>
     <Compile Include="Helpers\ClaimAuthorizeAttribute.cs" />
     <Compile Include="Helpers\Claim.cs" />
-    <Compile Include="Helpers\SecurePasswordHasher.cs" />
+    <Compile Include="Helpers\PasswordHash.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\DataContext.cs" />

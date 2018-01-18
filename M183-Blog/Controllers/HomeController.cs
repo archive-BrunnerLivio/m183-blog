@@ -27,7 +27,7 @@ namespace M183_Blog.Controllers
             User user1 = new User
             {
                 Username = "yvesloy",
-                Password = SecurePasswordHasher.Hash("admin"),
+                Password = PasswordHash.Hash("admin"),
                 Firstname = "Yves",
                 Familyname = "Zumbühl",
                 Mobilephonenumber = "0041799506553", //ToDo: Claims sind immer Null, behebe
@@ -38,7 +38,7 @@ namespace M183_Blog.Controllers
             User user2 = new User()
             {
                 Username = "BrunnerLivio",
-                Password = SecurePasswordHasher.Hash("1234"),
+                Password = PasswordHash.Hash("1234"),
                 Firstname = "Livio",
                 Familyname = "Brunner",
                 Mobilephonenumber = "0041793189773",

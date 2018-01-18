@@ -29,7 +29,7 @@ namespace M183_Blog.Controllers
                 if (db.Users.Any(x => x.Username == model.Username))
                 {
                     User user = db.Users.First(x => x.Username == model.Username);
-                    if (SecurePasswordHasher.Verify(model.Password, user.Password))
+                    if (PasswordHash.Verify(model.Password, user.Password))
                     {
                         Token token = new Token()
                         {
