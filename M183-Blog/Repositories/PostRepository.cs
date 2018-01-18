@@ -36,5 +36,11 @@ namespace M183_Blog
             return this.db.Posts.FirstOrDefault(p =>
                       p.Id == postId && (p.Status != PostStatus.Private || p.User == user));
         }
+
+        public Post GetPublicPostById(int postId)
+        {
+            return this.db.Posts.FirstOrDefault(p =>
+                      p.Id == postId && (p.Status != PostStatus.Private));
+        }
     }
 }
