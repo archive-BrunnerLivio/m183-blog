@@ -8,6 +8,21 @@ using M183_Blog.ViewModels;
 
 namespace M183_Blog.Controllers
 {
+    /**
+     * 1 )
+     * Er ist einfach anzuwenden, jedoch relativ sicher dank der
+     * iterationszahl & salt kombination. Das diese Kombination wird
+     * vor nicht-quanten-computer relativ sicher sein, da die Zeit
+     * um dies zu brute-forcen zu lange dauern würde. Auch wäre eine
+     * Rainbowtable nutzlos.
+     * 
+     * 2) 
+     * Man kann den User vor ungenehmtige Logins schützen, indem man
+     * ein Mail sendet, jedes mal wenn sich ein User mit einer anderen IP
+     * einloggt.
+     * 
+     * 
+     * */
     public class HomeController : Controller
     {
         public DataContext db = new DataContext();
