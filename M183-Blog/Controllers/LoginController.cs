@@ -67,13 +67,28 @@ namespace M183_Blog.Controllers
         [HttpPost]
         public ActionResult TokenLogin(TokenViewModel model)
         {
+            // Create repos
             TokenRepository tokenRepository = new TokenRepository(db);
+            UserRepository userRepository = new UserRepository(db);
+
+            User user = userRepository.GetUserById(model.UserId);
+
             if (tokenRepository.VerifyToken(model.Token, model.UserId))
             {
                 LogUserAction("Login successful", model.UserId);
-                SessionHelper.SetUser(db.Users.First(x => x.Id == model.UserId));
+                SessionHelper.SetUser(user);
+
+                if (user.Claims.Contains(Claim.Admin))
+                {
+                    return RedirectToAction("Index", "Admin");
+                } else if(user.Claims.Contains(Claim.Create))
+                {
+                    return RedirectToAction("Index", "User");
+                }
+
                 return RedirectToAction("Index", "Home");
             }
+
             LogUserAction("Invalid token", model.UserId);
             ViewBag.Status = "invalid_token";
             ModelState.AddModelError("Token", "Token is not valid");
