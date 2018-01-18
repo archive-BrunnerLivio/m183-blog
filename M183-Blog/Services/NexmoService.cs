@@ -9,19 +9,35 @@ namespace M183_Blog.Services
     public class NexmoService
     {
         private static readonly HttpClient client = new HttpClient();
+        private string apiKey;
+        private string apiSecret;
+        private string apiEndpoint;
 
-        public string SendSMS(int secret, string phonenumber)
+        public NexmoService()
         {
-            string apiKey = WebConfigurationManager.AppSettings["Nexmo_Api_Key"];
-            string apiSecret = WebConfigurationManager.AppSettings["Nexmo_Api_Secret"];
-            var request = (HttpWebRequest) WebRequest.Create("https://rest.nexmo.com/sms/json");
+            apiKey = WebConfigurationManager.AppSettings["Nexmo_Api_Key"];
+            apiSecret = WebConfigurationManager.AppSettings["Nexmo_Api_Secret"];
+            apiEndpoint = WebConfigurationManager.AppSettings["Nexmo_Api_Endpoint"];
+        }
 
+
+        private string GetPostData(int secret, string phonenumber)
+        {
             string postData = "api_key=" + apiKey;
             postData += "&api_secret=" + apiSecret;
             postData += "&to=" + phonenumber;
-            postData += "&from=\"\"Blog\"\"";
-            postData += "&text=\"Your secret is: " + secret + "\", darling :*";
-            var data = Encoding.ASCII.GetBytes(postData);
+            postData += "&text=\"\"Whats up? Here is your SECRET to login: " + secret + ". DO NOT SHARE THIS CODE. \"\"";
+            postData += "&from=\"\"Yves and Livios super awesome Blog\"\"";
+
+            return postData;
+        }
+
+        public string SendSMS(int secret, string phonenumber)
+        {
+
+            var request = (HttpWebRequest)WebRequest.Create(apiEndpoint);
+
+            var data = Encoding.ASCII.GetBytes(GetPostData(secret, phonenumber));
 
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
@@ -32,7 +48,7 @@ namespace M183_Blog.Services
                 stream.Write(data, 0, data.Length);
             }
 
-            var response = (HttpWebResponse) request.GetResponse();
+            var response = (HttpWebResponse)request.GetResponse();
 
             return new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
