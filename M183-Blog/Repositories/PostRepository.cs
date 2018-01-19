@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using M183_Blog.Helpers;
 using M183_Blog.Models;
 using M183_Blog.Repositories;
 
@@ -31,16 +32,10 @@ namespace M183_Blog
             return this.db.Posts.Where(p => p.Status == PostStatus.Private).ToList();
         }
 
-        public Post GetPublicPostById(int postId, User user)
-        {
-            return this.db.Posts.FirstOrDefault(p =>
-                      p.Id == postId && (p.Status != PostStatus.Private || p.User == user));
-        }
-
         public Post GetPublicPostById(int postId)
         {
             return this.db.Posts.FirstOrDefault(p =>
-                      p.Id == postId && (p.Status != PostStatus.Private));
+                      p.Id == postId && (p.Status != PostStatus.Private || p.User == SessionHelper.User));
         }
     }
 }

@@ -78,10 +78,10 @@ namespace M183_Blog.Controllers
                 LogUserAction("Login successful", model.UserId);
                 SessionHelper.SetUser(user);
 
-                if (user.Claims.Contains(Claim.Admin))
+                if (SessionHelper.HasClaim(Claims.Admin))
                 {
                     return RedirectToAction("Index", "Admin");
-                } else if(user.Claims.Contains(Claim.Create))
+                } else if(SessionHelper.HasClaim(Claims.Create))
                 {
                     return RedirectToAction("Index", "User");
                 }

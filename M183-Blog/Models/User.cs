@@ -22,9 +22,9 @@ namespace M183_Blog.Models
         public string Firstname { get; set; }
         public string Familyname { get; set; }
         public string Mobilephonenumber { get; set; }
-        public List<string> Claims { get; set; }
         public string Status { get; set; }
 
+        public virtual ICollection<Claim> Claims { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Token> Tokens { get; set; }

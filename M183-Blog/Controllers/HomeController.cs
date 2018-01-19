@@ -39,6 +39,18 @@ namespace M183_Blog.Controllers
 
         public ActionResult Seed()
         {
+            Claim claim1 = new Claim
+            {
+                Name = Claims.Admin
+            };
+            Claim claim2 = new Claim
+            {
+                Name = Claims.Comment
+            };
+            Claim claim3 = new Claim
+            {
+                Name = Claims.Create
+            };
             User user1 = new User
             {
                 Username = "yvesloy",
@@ -46,7 +58,7 @@ namespace M183_Blog.Controllers
                 Firstname = "Yves",
                 Familyname = "Zumbühl",
                 Mobilephonenumber = "0041799506553", //ToDo: Claims sind immer Null, behebe
-                Claims = new List<string>() {"BlogCanAdminister"},
+                Claims = new List<Claim> { claim1 },
                 Status = " retro poke try-hard brooklyn"
             };
 
@@ -57,8 +69,8 @@ namespace M183_Blog.Controllers
                 Firstname = "Livio",
                 Familyname = "Brunner",
                 Mobilephonenumber = "0041793189773",
-                Claims = new List<string>() {"BlogCanCreate", "BlogCanComment"},
-                Status = "Heirloom XOXO pitchfork, polaroid cliche"
+                Claims = new List<Claim> { claim2, claim3 },
+                Status = "Heirloom XOXO pitchfork, polaroid cliche" 
             };
 
             Comment comment1 = new Comment

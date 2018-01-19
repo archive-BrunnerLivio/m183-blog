@@ -152,10 +152,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Claim.cs" />
+    <Compile Include="Helpers\Claims.cs" />
     <Compile Include="Helpers\ClaimAuthorizeAttribute.cs" />
     <Compile Include="Helpers\PasswordHash.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Repositories\TokenRepository.cs" />

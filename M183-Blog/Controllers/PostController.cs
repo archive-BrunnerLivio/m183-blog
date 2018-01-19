@@ -15,7 +15,7 @@ namespace M183_Blog.Controllers
         {
             this.postRepository = new PostRepository(db);
             return View("Index",
-                new DetailedPostViewModel(this.postRepository.GetPublicPostById(postId, SessionHelper.User)));
+                new DetailedPostViewModel(this.postRepository.GetPublicPostById(postId)));
         }
     }
 }

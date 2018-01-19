@@ -1,6 +1,6 @@
 ﻿namespace M183_Blog.Helpers
 {
-    public static class Claim
+    public static class Claims
     {
         public const string Admin = "BlogCanAdminister";
         public const string Create = "BlogCanCreate";

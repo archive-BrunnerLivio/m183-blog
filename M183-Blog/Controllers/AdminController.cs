@@ -6,7 +6,7 @@ namespace M183_Blog.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        [ClaimsAuthorize(Claim.Admin)]
+        [ClaimsAuthorize(Claims.Admin)]
         public ActionResult Index()
         {
             return View();
