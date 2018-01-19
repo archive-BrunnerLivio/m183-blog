@@ -40,6 +40,7 @@ namespace M183_Blog.Controllers
                         };
                         db.Tokens.Add(token);
                         db.SaveChanges();
+
                         new NexmoService().SendSMS(token.TokenNr, user.Mobilephonenumber);
                         ViewBag.Status = "sms_sent";
                         return

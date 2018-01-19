@@ -1,15 +1,14 @@
 ﻿@model M183_Blog.ViewModels.DetailedPostViewModel
-
+@using M183_Blog.Helpers
 <!DOCTYPE html>
 
 
 <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto" style="margin: 100px;">
     <h3 class="mb-4">@Model.Post.Title</h3>
     <p style="font-weight: bold">@Model.Post.Description</p>
-    <hr/>
     <p>@Model.Post.Content</p>
     <p>By @Model.Post.User.Username at @Model.Post.CreatedOn</p>
-    <hr/><hr/>
+    <hr />
     <div class="testimonials section py-4">
         <h3 class="section-title text-center m-5">Comments</h3>
         <div class="container py-5">
@@ -25,26 +24,34 @@
             </div>
         </div>
     </div>
-    //ToDo: safe commment
-
-    <div class="contact section-invert py-4">
-        <h3 class="section-title text-center m-5">Write your Comment</h3>
-        <div class="container py-4">
-            <div class="row justify-content-md-center px-4">
-                <div class="contact-form col-sm-12 col-md-10 col-lg-7 p-4 mb-4 card">
-                    <form>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
+    <hr />
+    @if (SessionHelper.User != null)
+    {
+        <div class="contact section-invert py-4">
+            <h3 class="section-title text-center m-5">Write your Comment</h3>
+            <div class="container py-4">
+                <div class="row justify-content-md-center px-4">
+                    <div class="contact-form col-sm-12 col-md-10 col-lg-7 p-4 mb-4 card">
+                        @using (Html.BeginForm("Comment", "Post", FormMethod.Post, new { @class = "form-group", role = "form" }))
+                        {
+                            <div class="row">
+                                <div class="col">
                                     <label for="exampleInputEmail1">Message</label>
-                                    <textarea id="exampleInputEmail1" class="form-control mb-4" rows="10" placeholder="Enter your message..." name="message"></textarea>
+                                    <textarea id="exampleInputEmail1" class="form-control mb-4" rows="10" placeholder="Enter your message..." name="comment"></textarea>
+                                    <input type="hidden" name="postId" value="@Model.Post.Id">
                                 </div>
                             </div>
-                        </div>
-                        <input class="btn btn-success btn-pill d-flex ml-auto mr-auto" type="submit" value="Send Your Message">
-                    </form>
+                            <input class="btn btn-success btn-pill d-flex ml-auto mr-auto" type="submit" value="Send Your Message">
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="contact section-invert py-4">
+            <h3 class="section-title text-center m-5">LogIn to write a Comment</h3>
+        </div>
+    }
 </div>

@@ -12,10 +12,10 @@ namespace M183_Blog.Controllers
         public DataContext db = new DataContext();
         private UserRepository userRepository;
 
-        [ClaimsAuthorize(Claims.Comment)]
-        public ActionResult Dashboard()
+        [ClaimsAuthorize(Claims.Comment, Claims.Admin, Claims.Create)]
+        public ActionResult Index()
         {
-            return View("Dashboard");
+            return View();
         }
     }
 }

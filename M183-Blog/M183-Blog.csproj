@@ -160,6 +160,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Repositories\TokenRepository.cs" />
+    <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\NexmoService.cs" />
     <Compile Include="ViewModels\DetailedPostViewModel.cs" />
@@ -193,7 +194,7 @@
     <Content Include="Views\Login\TokenLogin.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\User\Dashboard.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

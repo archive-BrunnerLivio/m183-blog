@@ -35,7 +35,7 @@
                     <!-- Login -->
                     <ul class="header-social-icons navbar-nav ml-auto">
                         <li class="nav-item active" >
-                            @Html.ActionLink((SessionHelper.UserName != string.Empty ? "Login" : "Logout"), "Index", "Login", new {area = ""}, new {@class = "nav-link"})
+                            @Html.ActionLink((SessionHelper.User == null ? "Login" : SessionHelper.UserName), "Index", (SessionHelper.User == null ? "Login" : "User"), new {area = ""}, new {@class = "nav-link"})
                         </li>
                     </ul>
                 </div>
